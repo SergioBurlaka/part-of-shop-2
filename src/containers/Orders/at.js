@@ -1,0 +1,4 @@
+export default {
+ 
+  SET_DISCOVERY_METAL_DELAY: 'SET_DISCOVERY_METAL_DELAY',
+}
