@@ -7,7 +7,8 @@ import {
 
 
 const stp = (s) => ({
-  
+  orders: s.main.orders,
+  products: s.main.products,
 });
 
 
@@ -22,3 +23,5 @@ const dtp = (d) => ({
 
 
 export default connect(stp, dtp)(Component);
+
+
