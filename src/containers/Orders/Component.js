@@ -1,6 +1,7 @@
 import React , {Component} from 'react';
 import PropTypes from 'prop-types';
 import './Orders.scss';
+import moment from 'moment';
 
 
 
@@ -41,11 +42,42 @@ class Orders extends Component {
 
   render() {
 
+    const {orders} = this.props
+
+    console.log("orders", orders)
 
 
     return (
       <div className="discovery-section">
          Orders
+
+         <div className="tabs">
+              {orders.map((item, index) => {
+                return (
+                  <div
+                    className={`tab ${item.isSelected ? '' : ''}`}
+                    onClick={() => {
+                      // this.checkCurrentRadio(item.value, index)
+
+                      console.log(" hello", item.title)
+                    }}
+                    key={index}>
+                   
+                    <div className="selected">
+                      {item.title}
+                    </div>
+                    <div className="selected">
+                      {moment(item.date).format("MM")+"/12" }
+                    </div>
+                    <div className="selected">
+                      {moment(item.date).format("DD/MMM/YY") }
+                    </div>
+                  </div>
+                )
+
+              })
+              }
+            </div>
          
       </div>
     )
