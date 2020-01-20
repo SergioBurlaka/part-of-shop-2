@@ -5,6 +5,7 @@ import rc from '../rootRoutes/routes';
 import Orders from '../containers/Orders';
 import Products from '../containers/Products';
 import Navigation from '../containers/Navigation';
+import TopMenu from '../containers/TopMenu';
 import "./ControlPanel.scss";
 
 
@@ -23,12 +24,16 @@ class ControlPanel extends React.Component {
 
 
     return (
-      <div className="control-panel">
-          <Navigation/>
-          <Switch>
-              <Route component={Orders} path={rc.orders}/>
-              <Route component={Products} path={rc.products}/>
-          </Switch>
+      <div >
+        
+            <TopMenu/>
+          <div className="control-panel">
+            <Navigation/>
+            <Switch>
+                <Route component={Orders} path={rc.orders}/>
+                <Route component={Products} path={rc.products}/>
+            </Switch>
+          </div>
       </div>
     )
   }

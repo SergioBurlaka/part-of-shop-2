@@ -28,10 +28,10 @@ class Navigation extends Component {
       <section className="control-panel__nav">
           <div className="control-panel__nav-list">
               <NavLink to={rc.products} className="control-panel__nav-item">
-                Products link
+                Products
               </NavLink>
               <NavLink to={rc.orders} className="control-panel__nav-item">
-                Orders link
+                Orders
               </NavLink>
             
             </div>

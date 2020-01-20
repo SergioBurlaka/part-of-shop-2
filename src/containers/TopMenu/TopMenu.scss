@@ -1,0 +1,30 @@
+
+
+.top-menu-wrapper{
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    box-shadow: 0px 9px 13px 0px rgba(0, 0, 0, 0.11);
+    z-index: 10;
+    position: relative;
+
+}
+
+
+.time-section{
+    font-weight: 600;
+    font-size: 14px;
+
+    >div{
+        margin-bottom: 5px;
+        margin-top: 5px;
+    }
+    .date-wrapper{
+        display: flex;
+        >div{
+            margin-right: 15px;
+            
+        }
+    }
+  
+}
