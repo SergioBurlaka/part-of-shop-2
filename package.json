@@ -1,7 +1,6 @@
 {
   "name": "weather-app",
   "version": "0.1.0",
-  "homepage": "https://github.com/SergioBurlaka/part-of-shop.git",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.26",
@@ -9,6 +8,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.12.0",
     "@fortawesome/react-fontawesome": "^0.1.8",
     "axios": "^0.19.0",
+    "express": "^4.17.1",
     "immutability-helper": "^3.0.0",
     "moment": "^2.24.0",
     "node-sass": "^4.13.0",
@@ -24,13 +24,12 @@
     "redux-thunk": "^2.3.0",
     "sass-loader": "7.1.0"
   },
+  "proxy": "http://localhost:8080",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
