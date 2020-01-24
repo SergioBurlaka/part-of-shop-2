@@ -4,14 +4,15 @@ import './Orders.scss';
 import moment from 'moment';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faListUl, faChevronRight, faBoxOpen } from '@fortawesome/free-solid-svg-icons';
+import { faListUl, faTimes, faChevronRight, faBoxOpen } from '@fortawesome/free-solid-svg-icons';
 
 
 class Orders extends Component {
   state = {
     curentProducts: [],
     showColection: false,
-    selectedOrder: null
+    selectedOrder: null,
+    selectedOrderIndex: null,
   };
 
   componentDidMount() {
@@ -32,7 +33,17 @@ class Orders extends Component {
    
   }
 
-  setproductsToShow = (currentOrder) => {
+  closeProducts = () => {
+    this.setState({
+      curentProducts: [],
+      showColection: false,
+      selectedOrder: null,
+      selectedOrderIndex: null,
+    })
+  }
+
+
+  setproductsToShow = (currentOrder, indexOfOrder) => {
     const {products} = this.props
     let colection = currentOrder.products;
 
@@ -57,7 +68,8 @@ class Orders extends Component {
     this.setState({
       curentProducts: newProducts, 
       showColection: true,
-      selectedOrder: currentOrder 
+      selectedOrder: currentOrder, 
+      selectedOrderIndex: indexOfOrder 
     })
 
   };
@@ -69,22 +81,23 @@ class Orders extends Component {
   render() {
 
     const {orders} = this.props
-    const {curentProducts, selectedOrder} = this.state
+    const {curentProducts, selectedOrder, selectedOrderIndex} = this.state
 
     console.log("orders", orders)
 
 
+
+
     return (
       <div className="discovery-section">
-         Orders
-
+       
          <div className="tabs">
               {orders.map((item, index) => {
                 return (
                   <div
-                    className={`tab ${item.isSelected ? '' : ''}`}
+                    className={`tab ${selectedOrderIndex === index ? 'selected' : ''}`}
                     onClick={() => {
-                      this.setproductsToShow(item)
+                      this.setproductsToShow(item, index)
 
                       console.log(" hello", item.title)
                     }}
@@ -122,20 +135,33 @@ class Orders extends Component {
               })
               }
             </div>
+
+        {selectedOrder &&
          <div className="products-section"> 
-         
-         {selectedOrder && selectedOrder.title}
+          <div className="close"
+           onClick={() => {
+            this.closeProducts()
+          }}
+          >
+            <FontAwesomeIcon icon={faTimes} /> 
+          </div>
+          <h1>
+            {selectedOrder && selectedOrder.title}
+          </h1>
           {curentProducts.map((item, index) => { 
-            // console.log("products item", item)
                   return (
                     <div className="products-card"   key={index}>
                       <FontAwesomeIcon className="icon-card" icon={faBoxOpen} /> 
                       {item.title}
-                   </div>
+                    </div>
                     )
               })
-            }
-         </div> 
+           }
+        </div> 
+
+        }
+        
+
       </div>
     )
   }
